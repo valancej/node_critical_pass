@@ -3,7 +3,7 @@ steps:
   MyDockerImage:
     title: Building Docker Image
     type: build
-    image_name: '${{QA_IMAGE}}'
+    image_name: ${{QA_IMAGE}}
     working_directory: ./
     tag: latest
     dockerfile: Dockerfile
@@ -17,7 +17,7 @@ steps:
       - echo "Scanning image with Anchore"
       - anchore-cli image add ${{QA_IMAGE}}}
       - echo "Waiting for analysis to complete"
-      - anchore-cli image wait ${{QA_IMAGE}}}
+      - anchore-cli image wait ${{QA_IMAGE}}
       - echo "Analysis complete"
       - if [ "${{ANCHORE_FAIL_ON_POLICY}}" == "true" ] ; then anchore-cli evaluate check ${{QA_IMAGE}}; fi
   PushImage:
