@@ -15,7 +15,7 @@ steps:
     image: anchore/engine-cli:latest
     commands:
       - echo "Scanning image with Anchore"
-      - anchore-cli image add ${{QA_IMAGE}}}
+      - anchore-cli image add ${{QA_IMAGE}}
       - echo "Waiting for analysis to complete"
       - anchore-cli image wait ${{QA_IMAGE}}
       - echo "Analysis complete"
