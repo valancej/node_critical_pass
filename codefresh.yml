@@ -3,7 +3,7 @@ steps:
   MyDockerImage:
     title: Building Docker Image
     type: build
-    image_name: r.cfcr.io/valancej/r.cfcr.io/valancej/valancej/nodecriticalpass:latest
+    image_name: '${{QA_IMAGE}}'
     working_directory: ./
     tag: latest
     dockerfile: Dockerfile
