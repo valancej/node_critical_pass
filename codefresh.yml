@@ -3,7 +3,7 @@ steps:
   MyDockerImage:
     title: Building Docker Image
     type: build
-    image_name: ${{QA_IMAGE}}
+    image_name: r.cfcr.io/valancej/r.cfcr.io/valancej/valancej/nodecriticalpass:latest
     working_directory: ./
     tag: latest
     dockerfile: Dockerfile
@@ -15,7 +15,7 @@ steps:
     image: anchore/engine-cli:latest
     commands:
       - echo "Scanning image with Anchore"
-      - anchore-cli image add r.cfcr.io/valancej/r.cfcr.io/valancej/valancej/nodecriticalpass:latest
+      - anchore-cli registry add r.cfcr.io valancej 8ffdddc8263448ec7ba58af8f379e076 --insecure --skip-validate
       - echo "Waiting for analysis to complete"
       - anchore-cli image wait r.cfcr.io/valancej/r.cfcr.io/valancej/valancej/nodecriticalpass:latest
       - echo "Analysis complete"
